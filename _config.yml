@@ -1,0 +1,6 @@
+# Only the product belongs on GitHub Pages. Repository documentation is not a website page.
+exclude:
+  - README.md
+  - DEPLOYMENT.md
+  - build-demo.cjs
+  - dist

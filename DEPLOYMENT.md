@@ -4,9 +4,12 @@ Connect this repository in Cloudflare Pages. Select the `main` production branch
 framework **None**, build command `node build-demo.cjs`, and output directory `dist`.
 No dependencies or environment variables are needed.
 
-The build copies the static planner and enables its existing `?demo` mode before
-the application starts. Demo data uses the app's separate demo storage namespace.
-The regular root planner hosted on GitHub Pages retains its existing behavior.
+The build copies the static planner and sets its compile-time `VM_DEMO` flag.
+The GitHub root always runs the normal planner, including with `?demo` in the URL.
+The Cloudflare output always runs the demo, even without a query string.
+Neither site contains links to switch to the other. Demo data uses its own storage
+namespace as well as a separate origin. Repository documentation is excluded from
+GitHub Pages by `_config.yml`.
 
 The public demo is at https://veyramisk-budget-planner.pages.dev/ and builds
 automatically from `1esrakula/veyramisk-budget-planner` on GitHub.

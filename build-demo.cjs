@@ -1,5 +1,5 @@
 // Cloudflare Pages: build command `node build-demo.cjs`, output directory `dist`.
-// The regular GitHub Pages planner stays unchanged; only this output forces demo mode.
+// GitHub Pages always serves the normal planner; this output always serves the demo.
 const fs = require('node:fs');
 const path = require('node:path');
 const out = path.join(__dirname, 'dist');
@@ -8,14 +8,15 @@ for (const file of ['index.html', 'app.js', 'veyramisk.css', 'sw.js', 'favicon.s
   fs.copyFileSync(path.join(__dirname, file), path.join(out, file));
 }
 const html = fs.readFileSync(path.join(out, 'index.html'), 'utf8')
-  .replace('<script type="module" src="./app.js"></script>', '<script src="./demo-config.js"></script>\n    <script type="module" src="./app.js"></script>')
   .replace('<title>VeyraMisk ADHD Budget Planner</title>', '<title>Free Live Demo | VeyraMisk ADHD Budget Planner</title>')
   .replace('https://1esrakula.github.io/veyramisk-budget-planner/', 'https://veyramisk-budget-planner.pages.dev/');
 fs.writeFileSync(path.join(out, 'index.html'), html);
-fs.writeFileSync(path.join(out, 'demo-config.js'), `// Keep public example data separate from the regular planner.\nconst demoURL=new URL(location.href);\nif(!demoURL.searchParams.has('demo')){demoURL.searchParams.set('demo','');history.replaceState(null,'',demoURL);}\n`);
+const demoApp = fs.readFileSync(path.join(out, 'app.js'), 'utf8').replace('const VM_DEMO = false;', 'const VM_DEMO = true;');
+if (!demoApp.includes('const VM_DEMO = true;')) throw new Error('Demo mode configuration missing');
+fs.writeFileSync(path.join(out, 'app.js'), demoApp);
+fs.rmSync(path.join(out, 'demo-config.js'), { force: true });
 const sw = fs.readFileSync(path.join(out, 'sw.js'), 'utf8')
-  .replace('veyramisk-v2-analysis', 'veyramisk-demo-v3')
-  .replace("['./','./app.js'", "['./','./demo-config.js','./app.js'");
+  .replace(/const CACHE='[^']+'/, "const CACHE='veyramisk-demo-v4'");
 fs.writeFileSync(path.join(out, 'sw.js'), sw);
 fs.writeFileSync(path.join(out, '_headers'), '/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n/sw.js\n  Cache-Control: no-cache\n/index.html\n  Cache-Control: no-cache\n');
 console.log('Built VeyraMisk demo in dist/');

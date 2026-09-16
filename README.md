@@ -22,7 +22,9 @@ The demo uses example data and a separate storage namespace.
 ## Run or deploy
 
 This is a static HTML/CSS/JavaScript app. Serve the root directory with a local
-HTTP server to use the normal planner. Add `?demo` to use its sample-data mode.
+HTTP server to use the normal planner. URL parameters cannot switch its mode.
+The GitHub site serves only the normal planner; Cloudflare serves only the demo.
+Neither product contains a link to the other.
 
 For a dedicated Cloudflare Pages demo:
 
