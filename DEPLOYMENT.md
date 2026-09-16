@@ -12,9 +12,9 @@ namespace as well as a separate origin. Repository documentation is excluded fro
 GitHub Pages by `_config.yml`.
 
 The public demo is at https://veyramisk-budget-planner.pages.dev/ and builds
-automatically from `1esrakula/veyramisk-budget-planner` on GitHub.
+automatically from `veyramisk/veyramisk-budget-planner` on GitHub.
 The full planner is also published from `main` at
-https://1esrakula.github.io/veyramisk-budget-planner/ via GitHub Pages.
+https://veyramisk.github.io/veyramisk-budget-planner/ via GitHub Pages.
 The earlier direct-upload demo at https://veyramisk-budget-demo.pages.dev/
 remains available for existing links.
 

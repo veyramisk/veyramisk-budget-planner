@@ -9,7 +9,7 @@ for (const file of ['index.html', 'app.js', 'veyramisk.css', 'sw.js', 'favicon.s
 }
 const html = fs.readFileSync(path.join(out, 'index.html'), 'utf8')
   .replace('<title>VeyraMisk ADHD Budget Planner</title>', '<title>Free Live Demo | VeyraMisk ADHD Budget Planner</title>')
-  .replace('https://1esrakula.github.io/veyramisk-budget-planner/', 'https://veyramisk-budget-planner.pages.dev/');
+  .replace('https://veyramisk.github.io/veyramisk-budget-planner/', 'https://veyramisk-budget-planner.pages.dev/');
 fs.writeFileSync(path.join(out, 'index.html'), html);
 const demoApp = fs.readFileSync(path.join(out, 'app.js'), 'utf8').replace('const VM_DEMO = false;', 'const VM_DEMO = true;');
 if (!demoApp.includes('const VM_DEMO = true;')) throw new Error('Demo mode configuration missing');
