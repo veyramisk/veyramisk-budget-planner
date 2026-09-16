@@ -2,7 +2,9 @@
 
 A calmer way to organize income, spending, bills, goals and everyday money plans.
 
-[Try the free live demo](https://veyramisk-budget-demo.pages.dev/)
+[Try the free live demo](https://veyramisk-budget-planner.pages.dev/)
+
+[Open the full planner](https://1esrakula.github.io/veyramisk-budget-planner/)
 
 ## Features
 

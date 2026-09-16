@@ -8,9 +8,12 @@ The build copies the static planner and enables its existing `?demo` mode before
 the application starts. Demo data uses the app's separate demo storage namespace.
 The regular root planner hosted on GitHub Pages retains its existing behavior.
 
-The public demo is currently at https://veyramisk-budget-demo.pages.dev/ using a
-direct upload. A Git-connected Pages project requires a separate project; the
-existing direct-upload project cannot be converted in place.
+The public demo is at https://veyramisk-budget-planner.pages.dev/ and builds
+automatically from `1esrakula/veyramisk-budget-planner` on GitHub.
+The full planner is also published from `main` at
+https://1esrakula.github.io/veyramisk-budget-planner/ via GitHub Pages.
+The earlier direct-upload demo at https://veyramisk-budget-demo.pages.dev/
+remains available for existing links.
 
 ## Verified in Chrome (2026-09-16)
 

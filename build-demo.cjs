@@ -9,7 +9,8 @@ for (const file of ['index.html', 'app.js', 'veyramisk.css', 'sw.js', 'favicon.s
 }
 const html = fs.readFileSync(path.join(out, 'index.html'), 'utf8')
   .replace('<script type="module" src="./app.js"></script>', '<script src="./demo-config.js"></script>\n    <script type="module" src="./app.js"></script>')
-  .replace('<title>VeyraMisk ADHD Budget Planner</title>', '<title>Free Live Demo | VeyraMisk ADHD Budget Planner</title>');
+  .replace('<title>VeyraMisk ADHD Budget Planner</title>', '<title>Free Live Demo | VeyraMisk ADHD Budget Planner</title>')
+  .replace('https://1esrakula.github.io/veyramisk-budget-planner/', 'https://veyramisk-budget-planner.pages.dev/');
 fs.writeFileSync(path.join(out, 'index.html'), html);
 fs.writeFileSync(path.join(out, 'demo-config.js'), `// Keep public example data separate from the regular planner.\nconst demoURL=new URL(location.href);\nif(!demoURL.searchParams.has('demo')){demoURL.searchParams.set('demo','');history.replaceState(null,'',demoURL);}\n`);
 const sw = fs.readFileSync(path.join(out, 'sw.js'), 'utf8')
