@@ -1,0 +1,26 @@
+# Cloudflare demo
+
+Connect this repository in Cloudflare Pages. Select the `main` production branch,
+framework **None**, build command `node build-demo.cjs`, and output directory `dist`.
+No dependencies or environment variables are needed.
+
+The build copies the static planner and enables its existing `?demo` mode before
+the application starts. Demo data uses the app's separate demo storage namespace.
+The regular root planner hosted on GitHub Pages retains its existing behavior.
+
+The public demo is currently at https://veyramisk-budget-demo.pages.dev/ using a
+direct upload. A Git-connected Pages project requires a separate project; the
+existing direct-upload project cannot be converted in place.
+
+## Verified in Chrome (2026-09-16)
+
+- The live demo opens with example data and a visible FREE LIVE DEMO notice.
+- All 20 navigation sections open successfully.
+- Adding a $10.25 example Food expense changes monthly expenses from $2,890 to
+  $2,900.25 and available money from $660 to $649.75.
+- That example entry and its totals survive a page reload.
+- JavaScript syntax validation passes; no captured application console errors
+  were present during the inspected flow.
+
+This is a functional smoke check, not an exhaustive audit of every calculation,
+backup import, export or browser/device combination.
